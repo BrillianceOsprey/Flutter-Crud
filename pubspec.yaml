@@ -1,0 +1,64 @@
+name: crud_flutter
+description: A new Flutter project.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # icons
+  cupertino_icons: ^1.0.2
+
+  # utils
+  intl: ^0.17.0
+  dartz: ^0.10.1
+  form_field_validator: ^1.1.0
+  smf_core: ^1.0.1
+  carousel_slider: ^4.1.1
+  smooth_page_indicator: ^1.0.0+2
+  google_fonts: ^3.0.1
+  flutter_vector_icons: ^2.0.0
+  cached_network_image: ^3.2.2
+  image_picker: ^0.8.5+3
+  path_drawing: ^1.0.1
+
+  # routing and navigation
+  auto_route: ^5.0.1
+
+  # hooks and state management
+  flutter_hooks: ^0.18.5+1
+  hooks_riverpod: ^1.0.4
+
+  # local storage
+  flutter_secure_storage: ^6.0.0
+
+  # serialization
+  json_annotation: ^4.6.0
+
+  # data and union classes
+  freezed_annotation: ^2.1.0
+
+  # Http client
+  dio: ^4.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+  auto_route_generator: ^5.0.2
+  json_serializable: ^6.3.1
+  freezed: ^2.1.0+1
+  build_runner: ^2.2.0
+
+flutter:
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+  #   - images/a_dot_ham.jpeg
