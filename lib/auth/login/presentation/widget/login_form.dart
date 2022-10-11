@@ -3,6 +3,7 @@ import 'package:crud_flutter/core/presentation/button/auth_state_button.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../core/application/auth_notifier.dart';
 import '../../../core/shared/shared/auth_provider.dart';
 
 class LoginForm extends ConsumerStatefulWidget {
@@ -24,7 +25,28 @@ class LoginFormState extends ConsumerState<LoginForm> {
     final passwordValidator = ref.watch(passwordValidatorProvider);
     final emailValidator = ref.watch(emailValidatorProvider);
     final isLoading = ref.watch(isInAuthProgressProvider);
-
+    ref.listen<AuthState>(authNotifierProvider, (previous, next) {
+      next.maybeWhen(
+          orElse: () {},
+          error: (_) {
+            setState(() {
+              ref.watch(isInAuthProgressProvider.notifier).state = false;
+            });
+            _.map(
+              server: (_) {
+                debugPrint('Auth failure with -${_.message}');
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AppDialog();
+                    });
+              },
+              storage: (_) {
+                debugPrint('Authentication failed with storage error!!!');
+              },
+            );
+          });
+    });
     return Form(
       key: _formKey,
       child: Column(
