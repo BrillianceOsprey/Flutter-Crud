@@ -1,4 +1,5 @@
 import 'package:crud_flutter/auth/core/application/auth_notifier.dart';
+import 'package:crud_flutter/auth/core/infrastructure/auth_interceptor.dart';
 import 'package:crud_flutter/auth/core/infrastructure/credential_storage/credential_storage.dart';
 import 'package:crud_flutter/auth/core/infrastructure/user_authenticator.dart';
 import 'package:crud_flutter/env.dart';
@@ -56,4 +57,10 @@ final isSignInProvider = Provider<bool>(
       ),
 );
 
-// final authInterceptorProvider = 
+final authInterceptorProvider = Provider(
+  (ref) => AuthInterceptor(
+    ref.watch(userAuthenticatorProvider),
+    ref.watch(authNotifierProvider.notifier),
+    ref.watch(dioForAuthProvider),
+  ),
+);

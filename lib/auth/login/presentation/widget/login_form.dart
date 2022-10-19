@@ -2,7 +2,9 @@ import 'package:crud_flutter/auth/core/shared/shared/from_provider.dart';
 import 'package:crud_flutter/core/presentation/button/auth_state_button.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:smf_core/smf_core.dart';
 
+import '../../../../core/presentation/widget/app_dialog.dart';
 import '../../../core/application/auth_notifier.dart';
 import '../../../core/shared/shared/auth_provider.dart';
 
@@ -20,6 +22,25 @@ class LoginFormState extends ConsumerState<LoginForm> {
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  void showMessage(String message, String title) {
+    showAnimatedDialog(
+      context,
+      dialog: AppDialog(
+        borderRadius: 10,
+        header: Text(
+          title,
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+        content: Text(
+          message,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        showDefaultOkAction: true,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final passwordValidator = ref.watch(passwordValidatorProvider);
@@ -35,11 +56,7 @@ class LoginFormState extends ConsumerState<LoginForm> {
             _.map(
               server: (_) {
                 debugPrint('Auth failure with -${_.message}');
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AppDialog();
-                    });
+                showMessage(_.message.toString(), 'Authentication Failed!.');
               },
               storage: (_) {
                 debugPrint('Authentication failed with storage error!!!');
@@ -58,8 +75,9 @@ class LoginFormState extends ConsumerState<LoginForm> {
             },
             autovalidateMode: AutovalidateMode.onUserInteraction,
             controller: emailController,
-            decoration:
-                const InputDecoration(label: Text('Email or phone number')),
+            decoration: const InputDecoration(
+              label: Text('Email or phone number'),
+            ),
           ),
           const SizedBox(
             height: 20,

@@ -23,25 +23,16 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
-      body: Container(
-        color: Colors.white,
-        height: double.infinity,
-        child: Center(
-          child: Column(
-            children: const [
-              Text('Hello'),
-              SizedBox(
-                height: 20,
-              ),
-              CircularProgressIndicator.adaptive()
-            ],
-          ),
+      body: Center(
+        // child: Image(
+        //   image: AssetImage('assets/images/color.png'),
+        // ),
+        child: Icon(
+          Icons.anchor,
+          size: 200,
+          color: Colors.lightBlue,
         ),
       ),
     );

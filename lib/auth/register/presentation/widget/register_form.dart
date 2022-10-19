@@ -2,7 +2,10 @@ import 'package:crud_flutter/auth/core/shared/shared/auth_provider.dart';
 import 'package:crud_flutter/core/presentation/button/auth_state_button.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:smf_core/smf_core.dart';
 
+import '../../../../core/presentation/widget/app_dialog.dart';
+import '../../../core/application/auth_notifier.dart';
 import '../../../core/shared/shared/from_provider.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -46,6 +49,7 @@ class _RegisterFormState extends State<RegisterForm> {
         final passwordValidator = ref.watch(passwordValidatorProvider);
         final obscureText = ref.watch(obscureTextProvider);
         final isLoading = ref.watch(isInAuthProgressProvider);
+
         return Form(
           key: _formKey,
           child: Column(

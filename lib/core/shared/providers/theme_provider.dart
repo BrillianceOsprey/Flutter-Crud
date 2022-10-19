@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:smf_core/smf_core.dart';
 
-import '../shared/config/app_theme.dart';
+import '../config/app_theme.dart';
 
 // use a simple StateProvider to toggle application ThemeMode;
 final StateProvider<ThemeMode> themeModeProvider =

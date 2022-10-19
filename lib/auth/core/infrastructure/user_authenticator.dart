@@ -75,6 +75,7 @@ class UserAuthenticator {
       } else {
         return left(
           AuthFailure.server(
+            
               '${response.statusCode}:${response.statusMessage}'),
         );
       }
