@@ -13,6 +13,7 @@ import 'package:smf_core/smf_core.dart';
 
 final initializationProvider = FutureProvider<Unit>(
   (ref) async {
+    await ref.read(sembaseProvider).init();
     // ignore: avoid_single_cascade_in_expression_statements
     ref.read(dioProvider)
       ..options = BaseOptions(
